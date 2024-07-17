@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muftia Ryskina-2110005</title>
+    <link rel="stylesheet" type="text/css" href="uas.css">
+    
+</head>
+<body>
+    <h1>AES Encryption</h1>
+    <label for="text">Text:</label>
+    <input type="text" id="text" placeholder="Enter text here">
+    <br>
+    <br>
+    <label for="key">Key:</label>
+    <input type="text" id="key" placeholder="Enter key here">
+    <br>
+    <button onclick="encryptText()">Encrypt</button>
+    <button onclick="decryptText()">Decrypt</button>
+    <h2>Result:</h2>
+    <p id="result"></p>
+
+    <footer>
+        <p>&copy; 2024 Created by Muftia Ryskina - 2110005</p>
+    </footer>
+
+    <!-- Include CryptoJS library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script>
+        function encryptText() {
+            const text = document.getElementById('text').value;
+            const key = document.getElementById('key').value;
+            const encrypted = CryptoJS.AES.encrypt(text, key).toString();
+            document.getElementById('result').innerText = `Encrypted Text: ${encrypted}`;
+        }
+
+        function decryptText() {
+            const text = document.getElementById('text').value;
+            const key = document.getElementById('key').value;
+            const decrypted = CryptoJS.AES.decrypt(text, key).toString(CryptoJS.enc.Utf8);
+            document.getElementById('result').innerText = `Decrypted Text: ${decrypted}`;
+        }
+    </script>
+</body>
+</html>
